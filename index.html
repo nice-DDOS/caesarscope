@@ -6,18 +6,18 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; img-src 'self' data:; connect-src 'none'; font-src https://fonts.gstatic.com; object-src 'none'; base-uri 'none'; form-action 'none'">
   <meta name="referrer" content="no-referrer">
   <meta name="theme-color" content="#101826">
-  <meta name="description" content="CipherScope — Arabic and English Caesar & Vigenère cryptanalysis. Attack both ciphers without the key.">
+  <meta name="description" content="CaesarScope — Arabic and English Caesar & Vigenère cryptanalysis. Attack both ciphers without the key.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="CipherScope — Caesar & Vigenère Attack Lab">
+  <meta property="og:title" content="CaesarScope — Caesar & Vigenère Attack Lab">
   <meta property="og:description" content="Attack Caesar and Vigenere ciphers without knowing their keys. Bilingual interactive lab with shareable challenges.">
-  <title>CipherScope — اكسر شفرات قيصر وفينير</title>
+  <title>CaesarScope — اكسر شفرات قيصر وفينير</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="header"><div class="shell headerInner"><div class="brand"><span class="mark" aria-hidden="true">C</span><div><div class="brandMain">CipherScope</div><div class="brandSub">CAESAR &amp; VIGENÈRE ATTACK LAB</div></div></div><button id="language" class="lang" type="button" aria-label="Switch language">English / EN</button></div></header>
+<header class="header"><div class="shell headerInner"><div class="brand"><span class="mark" aria-hidden="true">C</span><div><div class="brandMain">CaesarScope</div><div class="brandSub">CAESAR &amp; VIGENÈRE CRYPTANALYSIS LAB</div></div></div><button id="language" class="lang" type="button" aria-label="Switch language">English / EN</button></div></header>
 <main class="shell">
   <section class="hero">
     <div class="eyebrow">CYBERSECURITY · CRYPTANALYSIS</div>
@@ -32,6 +32,34 @@
       <button id="modeVigenere" class="cipherMode" type="button" aria-pressed="false">Vigenère • فينير</button>
     </div>
     <p class="modeExplanation" id="modeExplanation">قيصر: نجرب جميع المفاتيح الـ26 ونرتب النتائج حسب اللغة الإنجليزية.</p>
+    <button id="cipherSummaryToggle" class="summaryToggle" type="button" aria-expanded="false" aria-controls="cipherSummaryPanel">
+      <span id="summaryButtonText">📖 ملخص شفرة قيصر — اضغط للعرض</span>
+      <span class="summaryChevron" aria-hidden="true">⌄</span>
+    </button>
+    <section class="cipherSummaryPanel" id="cipherSummaryPanel" aria-labelledby="cipherSummaryHeading" hidden>
+      <h3 id="cipherSummaryHeading">ملخص شفرة قيصر (Caesar Cipher)</h3>
+      <div class="summarySection">
+        <div class="summarySectionTitle" id="summaryPrincipleTitle">المبدأ (Principle)</div>
+        <p id="summaryPrinciple">تشفير استبدال أحادي الأبجدية يحرك كل حرف بعدد ثابت من المواقع.</p>
+      </div>
+      <div class="summarySection">
+        <div class="summarySectionTitle" id="summaryStepsTitle">آلية العمل (How it works)</div>
+        <p id="summarySteps">نحوّل الحروف A–Z إلى أرقام 0–25، ونضيف المفتاح عند التشفير، ونطرحه عند فك التشفير.</p>
+      </div>
+      <div class="summaryFormula">
+        <div class="summarySectionTitle" id="summaryFormulaTitle">القانون (Formula)</div>
+        <code id="summaryFormula" dir="ltr">E(P) = (P + k) mod 26 | D(C) = (C - k + 26) mod 26</code>
+      </div>
+      <div class="summaryExample">
+        <div class="summarySectionTitle" id="summaryExampleTitle">مثال (Example)</div>
+        <code id="summaryExample" dir="ltr">HELLO + Key 3 → KHOOR</code>
+      </div>
+      <div class="summarySection">
+        <div class="summarySectionTitle" id="summaryAttackTitle">كيف نكسرها؟ (Cryptanalysis)</div>
+        <p id="summaryAttack">نجرّب كل المفاتيح الـ26 ونقارن النتائج حتى نرشّح الرسالة المقصودة.</p>
+      </div>
+      <p class="summaryNote" id="summaryNote">ملاحظة: هذه شفرة تعليمية كلاسيكية وليست مناسبة لحماية بيانات حساسة.</p>
+    </section>
     <label for="cipher" data-t="inputLabel">النص المشفّر (Ciphertext)</label>
     <textarea id="cipher" spellcheck="false" maxlength="5000" placeholder="KHOOR ZRUOG"></textarea>
     <p class="helper" id="inputHintText" data-t="inputHint">اكتب نصاً مشفّراً بالحروف الإنجليزية. إذا ما عندك، جرّب مثالاً جاهزاً.</p>
@@ -62,7 +90,7 @@
   </section>
   <section class="challenge" aria-labelledby="challengeTitle"><details id="challengeDetails"><summary><span id="challengeTitle" data-t="challengeTitle">🎓 تريد تسوي تحدّي للطلاب؟ اضغط هنا</span></summary><div class="detailBody"><p class="explain" id="challengeIntroText" data-t="challengeIntro">اكتب رسالة إنجليزية، والموقع يشفّرها بمفتاح عشوائي مخفي. أعطِ الطلاب النص المشفّر فقط، وخليهم يجربون الهجوم.</p><label for="secret" data-t="secretLabel">الرسالة السرية (قبل التشفير)</label><textarea id="secret" class="challengeInput" maxlength="5000" spellcheck="false" placeholder="MEET ME AFTER CLASS"></textarea><div class="challengeButtons"><button class="secondary" type="button" id="generate" data-t="generate">🔒 ولّد تحدّياً بمفتاح مخفي</button><button class="secondary" type="button" id="reveal" data-t="reveal" disabled>كشف الجواب الصحيح</button></div><p id="challengeError" class="error" role="alert"></p><div class="challengeResult" id="challengeResult"><div data-t="challengeMade">هذا هو النص الذي تعطيه للطلاب:</div><span class="challengeCipher" id="generatedCipher"></span><div class="challengeButtons"><button class="secondary" id="useChallenge" type="button" data-t="useChallenge">جرّب كسره بالأداة ↑</button><button class="secondary" id="shareChallenge" type="button" data-t="shareChallenge">🔗 انسخ رابط التحدّي</button></div><p class="helper" data-t="shareWarning">الرابط يتضمن النص المشفّر فقط، مو المفتاح أو النص الأصلي. لا تستخدم معلومات حساسة.</p><p id="shareStatus" class="shareStatus" role="status" aria-live="polite"></p><div class="secretReveal" id="secretReveal"></div></div></div></details></section>
 </main>
-<footer class="footer"><div class="shell" data-t="footer">© 2026 CipherScope • إعداد وتطوير عمار أحمد — باحث في الأمن السيبراني</div></footer>
+<footer class="footer"><div class="shell" data-t="footer">© 2026 CaesarScope • إعداد وتطوير عمار أحمد — باحث في الأمن السيبراني</div></footer>
 <script defer src="vigenere.js"></script>
 <script defer src="app.js"></script>
 </body>
