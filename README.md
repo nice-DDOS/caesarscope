@@ -1,10 +1,10 @@
-# CaesarScope 🔐 — Classical Cipher Attack Lab
+# CipherScope 🔐 — Caesar & Vigenère Attack Lab
 
 **Developed by Ammar Ahmed — Cybersecurity Researcher**  
 **المشروع من إعداد وتطوير عمار أحمد — باحث في الأمن السيبراني**  
 GitHub: [@nice-DDOS](https://github.com/nice-DDOS)
 
-**Live site:** https://nice-ddos.github.io/caesarscope/
+**Live site (original repository URL preserved):** https://nice-ddos.github.io/caesarscope/
 
 A free, bilingual (Arabic/English), mobile-friendly, client-side teaching tool to attack **Caesar Cipher** and **Vigenère Cipher** *without knowing the secret key*.
 
@@ -13,7 +13,7 @@ A free, bilingual (Arabic/English), mobile-friendly, client-side teaching tool t
 | Cipher | Method | Key space / limits |
 |---|---|---|
 | **Caesar** | Exhaustive brute force over all 26 shifts; rank plaintexts using English statistics and dictionary evidence. | Every shift is tested. The correct plaintext cannot always be identified from ciphertext alone. |
-| **Vigenère** | Ciphertext-only cryptanalysis: repeated-sequence evidence (Kasiski), Index of Coincidence, frequency analysis per key position, candidate-key search and English-language ranking. | Searches likely keyword keys up to a **maximum length of 16**, not all possible keys. Long, ordinary English text works much better than short text. |
+| **Vigenère** | Ciphertext-only cryptanalysis: repeated-sequence evidence (Kasiski), Index of Coincidence, frequency analysis per key position, candidate-key search and English-language ranking. | Searches likely keyword keys up to a **maximum length of 16**, optionally restricted by a known key-length hint, not all possible keys. Long, ordinary English text works much better than short text. |
 
 ### How to use (English)
 
@@ -71,3 +71,12 @@ The `_headers` file is not processed by GitHub Pages; a Content-Security-Policy 
 ## License
 
 MIT — see [LICENSE](LICENSE). Copyright © 2026 Ammar Ahmed (nice-DDOS).
+
+## Improved interface and Vigenère results (November 2026)
+
+- The product is now presented as **CipherScope — Caesar & Vigenère Attack Lab**. The existing repository name and GitHub Pages URL remain unchanged to avoid breaking previously shared links.
+- One simple page for both ciphers; the selected mode explains its attack method.
+- Vigenère's result includes a likely keyword, a compact list of alternatives, the number of evaluated key candidates, and an **evidence strength** label (strong / moderate / weak). This is a **heuristic signal, not a verified probability**.
+- Optional advanced setting: enter the **keyword length**, not the keyword, to narrow the search (1–16). Leaving it empty runs an automatic analysis.
+- Common-word key candidates and unspaced-text clues supplement frequency statistics; no actual key is assumed. Short ciphertext remains intrinsically ambiguous.
+- Known-key deterministic checks: `LEMON` with `ATTACK AT DAWN` and three longer instructor-style plaintexts; additional long messages were tested against a selection of keywords. These tests do **not** establish a universal success rate.
