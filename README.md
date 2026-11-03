@@ -1,58 +1,73 @@
-# CaesarScope 🗝️ — Caesar Cipher Attack Lab
+# CaesarScope 🔐 — Classical Cipher Attack Lab
 
-**Project maintained by [@nice-DDOS](https://github.com/nice-DDOS).**
+**Developed by Ammar Ahmed — Cybersecurity Researcher**  
+**المشروع من إعداد وتطوير عمار أحمد — باحث في الأمن السيبراني**  
+GitHub: [@nice-DDOS](https://github.com/nice-DDOS)
 
-**Break Caesar Cipher without the key** — a small, bilingual (Arabic/English), responsive, client-side cryptanalysis website made for cybersecurity education.
+**Live site:** https://nice-ddos.github.io/caesarscope/
 
-![CaesarScope desktop screenshot](assets/desktop-preview.png)
+A free, bilingual (Arabic/English), mobile-friendly, client-side teaching tool to attack **Caesar Cipher** and **Vigenère Cipher** *without knowing the secret key*.
 
-Optional class challenge view: [see screenshot](assets/challenge-preview.png).
+## ⚔️ Two attack modes
 
-## Features
+| Cipher | Method | Key space / limits |
+|---|---|---|
+| **Caesar** | Exhaustive brute force over all 26 shifts; rank plaintexts using English statistics and dictionary evidence. | Every shift is tested. The correct plaintext cannot always be identified from ciphertext alone. |
+| **Vigenère** | Ciphertext-only cryptanalysis: repeated-sequence evidence (Kasiski), Index of Coincidence, frequency analysis per key position, candidate-key search and English-language ranking. | Searches likely keyword keys up to a **maximum length of 16**, not all possible keys. Long, ordinary English text works much better than short text. |
 
-- **Ciphertext-only brute force**: test all 26 Caesar shifts (0–25), without a known key or plaintext.
-- **Automatic ranking** of the 26 candidates using English dictionary words, n-grams and letter-frequency χ² (heuristic, not a proof).
-- **Clear explanation** of the guessed plaintext and why that candidate scored best.
-- **One-page UI**, responsive on mobile, tablet and desktop; switch between **العربية** and **English**.
-- **Classroom challenge**: encrypt a sample message with a hidden random key and reveal the answer only after students attempt the attack.
-- **NEW: Share challenge link**: after publishing, generate a link that pre-fills the attack field with the **ciphertext only**. The key and original message are **not** included in the URL.
-- `matlab/caesar_attack.m` companion script for coursework.
+### How to use (English)
 
-> Educational note: exhaustive search guarantees that the correct Caesar key is **among the 26 attempts**, not that the program can always recognize which candidate the sender intended. For short or unusual texts, several candidates may be plausible. This is a learning tool, not secure encryption.
+1. Select **Caesar** or **Vigenère** at the top of the existing single-page form.
+2. Paste **ciphertext**. No original plaintext or key is necessary.
+3. Click **Break Cipher** / **Attack Vigenère Cipher**.
+4. Inspect the likely plaintext, suggested key, and explanation.
+5. Expand the optional list to compare candidates. You can also generate classroom challenges and share ciphertext-only challenge links.
 
-## Run locally
+**Vigenère demo:** Select Vigenère → **Long sample 1** → **Attack Vigenère Cipher**. The educational sample uses the keyword `LEMON`, which the analyzer should recover for this long English message.
 
-Open `index.html` directly in your browser or serve this directory with `python -m http.server 8080` and visit `http://localhost:8080`.
+**Caesar demo:** Select Caesar → enter `KHOOR ZRUOG` → **Break Cipher**. The suggested key is `3`; plaintext is `HELLO WORLD`.
 
-No build step, package manager, backend, paid API, dependency, account, or database is required.
+### طريقة الاستخدام (عربي)
 
-## Publish to GitHub + Netlify
+1. اختر **قيصر** أو **فينير** من نفس الصفحة.
+2. الصق **النص المشفّر فقط**، من دون المفتاح أو النص الأصلي.
+3. اضغط **اكسر الشفرة** وشاهد المفتاح والنص المرجّحين مع سبب الترشيح.
+4. افتح قائمة النتائج الاختيارية للمقارنة، أو ولّد تحدّياً للطلاب وشارك رابط النص المشفّر.
 
-1. Create a **public** repository named `caesarscope` on your own GitHub account. See the detailed [publishing guide](PUBLISHING.md).
-2. Upload the **contents of this project folder to the repository root**. `index.html` must be at the root (not inside a `CaesarScope-...` folder).
-3. Optional live link using **GitHub Pages**: Repository → **Settings** → **Pages** → **Build and deployment** → **Deploy from a branch** → branch `main` / folder `/(root)` → Save. Once GitHub completes deployment, your link will have the form `https://YOUR_USERNAME.github.io/caesarscope/`.
-4. Or use **Netlify**: Add new project → Import an existing project → GitHub → select your repo. **Build command:** leave blank. **Publish directory:** `.` (root). Netlify assigns a real URL once the site is published; do not invent one before deploying.
-5. Update the repository **About** text to: `Bilingual Caesar Cipher cryptanalysis lab — ciphertext-only brute force, key ranking, and shareable classroom challenges.` Add the live URL as the repo Website, choose topics such as `cryptanalysis`, `caesar-cipher`, `cybersecurity`, `brute-force`, `javascript`, `matlab`, and **Pin** the repository on your GitHub profile.
+**مهم:** في قيصر يتم اختبار المفاتيح الـ26 كاملة. أما فينير فالمفتاح كلمة، لذلك نستخدم تحليل Kasiski وIndex of Coincidence وتكرار الحروف للوصول إلى مرشحات قوية بدلاً من تجربة كل الكلمات الممكنة. النصوص القصيرة أو غير الإنجليزية قد تعطي نتائج غير دقيقة.
 
-**Security:** The site is client-side only and does not collect messages, keys, accounts or analytics. Shared links necessarily embed ciphertext in a URL, which may appear in browser history, messages, or web-server logs. Never use real secrets; Caesar cipher is not secure. See [SECURITY_AUDIT.md](SECURITY_AUDIT.md).
+## 🛡️ Security and privacy
 
-## بالعربي — طريقة الاستخدام
+- Static HTML / CSS / JavaScript only, no backend, login or paid AI API.
+- Ciphertext analysis stays in the browser; the site does not send input to a server.
+- Google Fonts is used for **Almarai** typography (font requests are separate from ciphertext analysis).
+- User-supplied text is written into the interface as text, not interpreted as HTML.
+- Challenge URLs embed ciphertext only, not the original plaintext or chosen key.
+- Input is bounded; the Vigenère analyzer uses up to 1,600 characters for ranking.
+- See [SECURITY_AUDIT.md](SECURITY_AUDIT.md) for the scope and limits of security checks.
 
-1. افتح الموقع وأدخل **النص المشفّر فقط**، أو اختَر مثالاً جاهزاً.
-2. اضغط **اكسر الشفرة الآن**. الأداة تجرّب كل الإزاحات من 0 إلى 25 بدون معرفة المفتاح.
-3. اقرأ النتيجة المرجّحة وسبب الترشيح؛ ولرؤية كل النتائج افتح «عرض جميع النتائج الـ26».
-4. للتجربة الجماعية افتح «تحدّي الطلاب»، اكتب رسالة واختر «ولّد تحدياً بمفتاح مخفي» ثم اضغط «انسخ رابط التحدّي» بعد نشر الموقع. الرابط يشارك النص المشفّر فقط.
-5. لا تخلط بين **استنفاد جميع المفاتيح** وبين **التأكد من الرسالة المقصودة**؛ الترجيح اللغوي ليس برهاناً قاطعاً.
+## 🧮 Core idea
 
-## Stack / License
+Caesar, for one letter: `P = (C − K) mod 26`.
 
-Plain HTML, CSS, JavaScript, MATLAB/Octave script. MIT License.
+Vigenère, for every English letter position `i`: `P_i = (C_i − K_(i mod m)) mod 26`, where `m` is the keyword length. Nonletters are preserved, and the key advances only on English A–Z characters.
 
+**A likely plaintext is not mathematical proof of the original message.** A known fragment, external context, or challenge's revealed answer can independently verify a guess.
 
-## CTF flag support / دعم أعلام CTF
-- The app automatically recognizes standard `PREFIX{body}` flags and scores common known CTF prefixes, decoded leetspeak words, and letter patterns. This avoids relying solely on English prose frequencies.
-- Optional **Expected flag prefix**, e.g. `VOID`, is context known from the event rather than the secret key.
-- Example ciphertext: `YRLG{f4354u_z45_zu0qj}` → likely key `3` → `VOID{c4354r_w45_wr0ng}`.
-- **No algorithm can guarantee that the intended answer is identified from ciphertext alone.** The app always makes all 26 attempts visible and reports a *candidate*.
+## 🚀 Hosting
 
-تقدر تلصق Flags من تحديات CTF مباشرة. الأداة تتعرف على صيغة `PREFIX{...}` وتقرأ الكلمات المكتوبة بأرقام مثل `c4354r` كـ`CAESAR` للترجيح، وتسمح بإدخال بادئة العلم المعروفة اختيارياً. هذا تحليل لغوي وليس تأكيداً مطلقاً.
+The site is ready for GitHub Pages (publish `main` branch, `/(root)`).
+
+Main files:
+- `index.html` — one-page bilingual UI
+- `style.css` — responsive design + Almarai typography
+- `app.js` — Caesar brute force, UI controls, sharing and challenges
+- `vigenere.js` — standalone offline Vigenère cryptanalysis engine
+- `_headers` — optional security headers when hosted on compatible platforms
+- `matlab/` — original Caesar academic lab materials
+
+The `_headers` file is not processed by GitHub Pages; a Content-Security-Policy meta tag is present in `index.html`.
+
+## License
+
+MIT — see [LICENSE](LICENSE). Copyright © 2026 Ammar Ahmed (nice-DDOS).
