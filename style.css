@@ -105,3 +105,23 @@
 .vigenereResult .candidateHead,.vigenereResult .candidateRow{grid-template-columns:minmax(85px,145px) minmax(0,1fr)}
 .vigenereResult .candidateRow span{overflow-wrap:anywhere}
 @media(max-width:420px){.cipherMode{font-size:12px;padding:11px 6px}.vigenereResult .candidateHead,.vigenereResult .candidateRow{grid-template-columns:minmax(75px,110px) minmax(0,1fr)}}
+
+
+/* Clear dual-cipher brand and evidence-led result feedback */
+.brandMain{letter-spacing:-.55px}
+.brandSub{font-size:10px;letter-spacing:.2px;line-height:1.4;max-width:230px}
+.modeExplanation{font-size:13px;background:#142235;color:#d6e3ef;border-inline-start:3px solid var(--orange);border-radius:8px;padding:10px 12px;margin:-4px 0 18px;line-height:1.9}
+.vigAdvanced{margin:12px 0 17px;border:1px solid #394e65;border-radius:11px;background:#15283a}
+.vigAdvanced .detailBody{padding:0 16px 15px}
+.vigAdvanced input{width:min(100%,150px);background:#0f1e2d;color:#f4f6f8;border:1px solid #506178;border-radius:8px;padding:10px;font-size:16px}
+.vigAdvanced input:focus-visible{outline:3px solid var(--good);outline-offset:2px}
+.vigAdvanced[hidden]{display:none}
+.resultTags{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.confidenceTag{display:inline-flex;border-radius:30px;padding:5px 11px;font-size:12px;font-weight:800;color:#fce0b3;background:#493a29}
+.confidenceTag[hidden]{display:none}
+.confidenceTag.strong{color:#b5f5ce;background:#24463a}
+.confidenceTag.moderate{color:#fce0b3;background:#493a29}
+.confidenceTag.low{color:#ffd6b0;background:#493020}
+.vigenereResult .candidateRow span:last-child{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.vigenereResult #bestKey{font-family:Consolas,"Courier New",monospace;overflow-wrap:anywhere}
+@media(max-width:480px){.brandSub{font-size:9px;max-width:170px}.modeExplanation{font-size:12px}}
