@@ -3,16 +3,28 @@
  const $ = (id) => document.getElementById(id);
  const texts = {
   ar: {
-   headlineLead:'اكسر',headlineFocus:'شفرة قيصر',headlineEnd:'بدون مفتاح',title:'اكسر شفرة قيصر بدون مفتاح',intro:'عندك رسالة مشفّرة؟ أدخلها، والأداة تجرّب جميع المفاتيح الـ26 (Brute Force) وترشّح النص الأصلي. ما تحتاج تعرف المفتاح ولا الرسالة الأصلية.',step1:'اكتب النص المشفّر',step2:'اضغط اكسر الشفرة',step3:'شوف النتيجة والسبب',inputTitle:'شنو الرسالة المشفّرة؟',noKey:'ما يحتاج مفتاح',inputLabel:'النص المشفّر (Ciphertext)',inputHint:'اكتب نصاً مشفّراً بالحروف الإنجليزية. إذا ما عندك، جرّب مثالاً جاهزاً.',examples:'أمثلة سريعة:',shortExample:'مثال قصير: JG',attackBtn:'⚡ اكسر الشفرة الآن',privacy:'التحليل يتم في متصفحك، ولا نحتفظ بالرسائل أو المفاتيح.',resultTitle:'النتيجة الأقرب للإنجليزية',possible:'✓ ترشيح، مو تأكيد',key:'المفتاح المرجّح',tested:'المفاتيح المجربة',why:'ليش الأداة رجّحت هاي النتيجة؟',copy:'نسخ النص الناتج',copied:'تم النسخ ✓',again:'جرّب نص ثاني',allKeys:'عرض جميع النتائج الـ26 (اختياري)',keysHint:'الأداة تختبر المفاتيح من 0 إلى 25. كلها صحيحة حسابياً؛ ترتيبها مجرد ترجيح لغوي.',colKey:'Key',colText:'Decrypted text',challengeTitle:'🎓 تريد تسوي تحدّي للطلاب؟ اضغط هنا',challengeIntro:'اكتب رسالة إنجليزية، والموقع يشفّرها بمفتاح عشوائي مخفي. أعطِ الطلاب النص المشفّر فقط، وخليهم يجربون الهجوم.',secretLabel:'الرسالة السرية (قبل التشفير)',generate:'🔒 ولّد تحدّياً بمفتاح مخفي',reveal:'كشف الجواب الصحيح',challengeMade:'هذا هو النص الذي تعطيه للطلاب:',useChallenge:'جرّب كسره بالأداة ↑',footer:'© 2026 CaesarScope • إعداد وتطوير عمار أحمد — باحث في الأمن السيبراني',invalid:'أدخل نصاً مشفّراً يحتوي حروفاً إنجليزية (A–Z) أولاً.',invalidSecret:'اكتب رسالة إنجليزية أولاً حتى نقدر نشفّرها.',testing:'جارِ تجربة المفتاح {k} من 25…',whyWords:'النتيجة تحتوي كلمات إنجليزية معروفة مثل: {words}. هذا يساعد على ترجيحها.',whyStat:'هذه النتيجة الأقرب إحصائياً لأنماط الحروف الإنجليزية بين المفاتيح الـ26.',whyShort:'النص قصير جداً؛ عدة مفاتيح ممكن تعطي كلمات مفهومة، لذلك النتيجة غير مؤكدة. افتح جميع الاحتمالات وقارنها.',whyLong:'التحليل يعتمد على الكلمات الإنجليزية وتكرار الحروف. حتى لو النتيجة تبدو واضحة، ما نقدر نثبت أنها المقصودة بدون دليل إضافي.',keyLabel:'المفتاح',secretAnswer:'المفتاح الحقيقي: {k} — الرسالة: {text}',englishOnly:'ملاحظة: التشفير هنا يطبق على الحروف الإنجليزية A–Z فقط.',sharedHint:'🔗 تم تحميل النص المشفّر من رابط التحدّي. اضغط اكسر الشفرة!',shareChallenge:'🔗 انسخ رابط التحدّي',shareWarning:'رابط المشاركة يحتوي النص المشفّر فقط، وليس المفتاح أو النص الأصلي. لا تستخدم أسراراً حقيقية.',shareCopied:'تم نسخ رابط التحدّي ✓',cipherCopied:'قبل النشر، تم نسخ النص المشفّر فقط. رابط المشاركة يتفعّل بعد نشر الموقع.',shareTooLong:'النص طويل للرابط. استخدم تحدياً أقصر من 300 حرف.',shareFailed:'تعذّر النسخ تلقائياً؛ انسخ النص المشفّر يدوياً.',buttonReady:'⚡ اكسر الشفرة الآن',ctfOptions:'🎯 عندك Flag من CTF؟ إعداد اختياري',ctfPrefixLabel:'بادئة العلم (إذا تعرفها)',ctfPrefixHint:'مثلاً VOID أو HTB أو FLAG، بدون الأقواس. مو مفتاح ولا نص أصلي؛ هذه صيغة العلم المعروفة للتحدّي.',ctfResult:'أقرب احتمال لعلم CTF',ctfWhyPrefix:'صيغة العلم تطابق البادئة المتوقعة {prefix}، وهي دليل قوي لترجيح المفتاح، وليست برهاناً قاطعاً.',ctfWhyKnown:'هذه النتيجة تبدأ ببادئة CTF معروفة: {prefix}.',ctfWhyWords:'بعد تحويل رموز Leetspeak، ظهرت كلمات: {words}.',ctfWhyWeak:'اكتشفنا صيغة Flag، لكن الأدلة ضعيفة لتحديد المفتاح بثقة. افتح جميع النتائج الـ26 أو أدخل بادئة العلم المعروفة.',ctfAuto:'تم التعرف على صيغة CTF Flag؛ استُخدم تحليل مناسب للأعلام بدل تحليل النصوص الإنجليزية العادية.'
+   headlineLead:'اكسر',headlineFocus:'شفرة قيصر',headlineEnd:'بدون مفتاح',title:'اكسر شفرة قيصر بدون مفتاح',intro:'عندك رسالة مشفّرة؟ أدخلها، والأداة تجرّب جميع المفاتيح الـ26 (Brute Force) وترشّح النص الأصلي. ما تحتاج تعرف المفتاح ولا الرسالة الأصلية.',step1:'اكتب النص المشفّر',step2:'اضغط اكسر الشفرة',step3:'شوف النتيجة والسبب',inputTitle:'شنو الرسالة المشفّرة؟',noKey:'ما يحتاج مفتاح',inputLabel:'النص المشفّر (Ciphertext)',inputHint:'اكتب نصاً مشفّراً بالحروف الإنجليزية. إذا ما عندك، جرّب مثالاً جاهزاً.',examples:'أمثلة سريعة:',shortExample:'مثال قصير: JG',attackBtn:'⚡ اكسر الشفرة الآن',privacy:'التحليل يتم في متصفحك، ولا نحتفظ بالرسائل أو المفاتيح.',resultTitle:'النتيجة الأقرب للإنجليزية',possible:'✓ ترشيح، مو تأكيد',key:'المفتاح المرجّح',tested:'المفاتيح المجربة',why:'ليش الأداة رجّحت هاي النتيجة؟',copy:'نسخ النص الناتج',copied:'تم النسخ ✓',again:'جرّب نص ثاني',allKeys:'عرض جميع النتائج الـ26 (اختياري)',keysHint:'الأداة تختبر المفاتيح من 0 إلى 25. كلها صحيحة حسابياً؛ ترتيبها مجرد ترجيح لغوي.',colKey:'Key',colText:'Decrypted text',challengeTitle:'🎓 تريد تسوي تحدّي للطلاب؟ اضغط هنا',challengeIntro:'اكتب رسالة إنجليزية، والموقع يشفّرها بمفتاح عشوائي مخفي. أعطِ الطلاب النص المشفّر فقط، وخليهم يجربون الهجوم.',secretLabel:'الرسالة السرية (قبل التشفير)',generate:'🔒 ولّد تحدّياً بمفتاح مخفي',reveal:'كشف الجواب الصحيح',challengeMade:'هذا هو النص الذي تعطيه للطلاب:',useChallenge:'جرّب كسره بالأداة ↑',footer:'© 2026 CipherScope • إعداد وتطوير عمار أحمد — باحث في الأمن السيبراني',invalid:'أدخل نصاً مشفّراً يحتوي حروفاً إنجليزية (A–Z) أولاً.',invalidSecret:'اكتب رسالة إنجليزية أولاً حتى نقدر نشفّرها.',testing:'جارِ تجربة المفتاح {k} من 25…',whyWords:'النتيجة تحتوي كلمات إنجليزية معروفة مثل: {words}. هذا يساعد على ترجيحها.',whyStat:'هذه النتيجة الأقرب إحصائياً لأنماط الحروف الإنجليزية بين المفاتيح الـ26.',whyShort:'النص قصير جداً؛ عدة مفاتيح ممكن تعطي كلمات مفهومة، لذلك النتيجة غير مؤكدة. افتح جميع الاحتمالات وقارنها.',whyLong:'التحليل يعتمد على الكلمات الإنجليزية وتكرار الحروف. حتى لو النتيجة تبدو واضحة، ما نقدر نثبت أنها المقصودة بدون دليل إضافي.',keyLabel:'المفتاح',secretAnswer:'المفتاح الحقيقي: {k} — الرسالة: {text}',englishOnly:'ملاحظة: التشفير هنا يطبق على الحروف الإنجليزية A–Z فقط.',sharedHint:'🔗 تم تحميل النص المشفّر من رابط التحدّي. اضغط اكسر الشفرة!',shareChallenge:'🔗 انسخ رابط التحدّي',shareWarning:'رابط المشاركة يحتوي النص المشفّر فقط، وليس المفتاح أو النص الأصلي. لا تستخدم أسراراً حقيقية.',shareCopied:'تم نسخ رابط التحدّي ✓',cipherCopied:'قبل النشر، تم نسخ النص المشفّر فقط. رابط المشاركة يتفعّل بعد نشر الموقع.',shareTooLong:'النص طويل للرابط. استخدم تحدياً أقصر من 300 حرف.',shareFailed:'تعذّر النسخ تلقائياً؛ انسخ النص المشفّر يدوياً.',buttonReady:'⚡ اكسر الشفرة الآن',ctfOptions:'🎯 عندك Flag من CTF؟ إعداد اختياري',ctfPrefixLabel:'بادئة العلم (إذا تعرفها)',ctfPrefixHint:'مثلاً VOID أو HTB أو FLAG، بدون الأقواس. مو مفتاح ولا نص أصلي؛ هذه صيغة العلم المعروفة للتحدّي.',ctfResult:'أقرب احتمال لعلم CTF',ctfWhyPrefix:'صيغة العلم تطابق البادئة المتوقعة {prefix}، وهي دليل قوي لترجيح المفتاح، وليست برهاناً قاطعاً.',ctfWhyKnown:'هذه النتيجة تبدأ ببادئة CTF معروفة: {prefix}.',ctfWhyWords:'بعد تحويل رموز Leetspeak، ظهرت كلمات: {words}.',ctfWhyWeak:'اكتشفنا صيغة Flag، لكن الأدلة ضعيفة لتحديد المفتاح بثقة. افتح جميع النتائج الـ26 أو أدخل بادئة العلم المعروفة.',ctfAuto:'تم التعرف على صيغة CTF Flag؛ استُخدم تحليل مناسب للأعلام بدل تحليل النصوص الإنجليزية العادية.'
   },
   en: {
-   headlineLead:'Break',headlineFocus:'Caesar Cipher',headlineEnd:'without the key',title:'Break Caesar Cipher without the key',intro:'Got encrypted text? Paste it here. The tool uses brute force to test all 26 keys and suggests the most likely original message. No key or plaintext required.',step1:'Enter ciphertext',step2:'Click Break Cipher',step3:'See the result and why',inputTitle:'What is the encrypted message?',noKey:'No key needed',inputLabel:'Ciphertext',inputHint:'Enter English-letter ciphertext. Don’t have any? Try one of the examples.',examples:'Quick examples:',shortExample:'Short example: JG',attackBtn:'⚡ Break Cipher',privacy:'Analysis runs in your browser. Messages and keys are not stored by this app.',resultTitle:'Most likely English plaintext',possible:'✓ Likely, not proven',key:'Likely key',tested:'Keys tested',why:'Why was this result chosen?',copy:'Copy plaintext',copied:'Copied ✓',again:'Try another message',allKeys:'See all 26 results (optional)',keysHint:'The tool tests keys 0–25. Every candidate is mathematically valid; ranking is only a language-based guess.',colKey:'Key',colText:'Decrypted text',challengeTitle:'🎓 Want a classroom challenge? Click here',challengeIntro:'Write an English message. The site encrypts it using a hidden random key. Give students only the ciphertext and let them attack it.',secretLabel:'Secret message (before encryption)',generate:'🔒 Create challenge with hidden key',reveal:'Reveal real answer',challengeMade:'Give this ciphertext to your classmates:',useChallenge:'Try breaking it above ↑',footer:'© 2026 CaesarScope • Developed by Ammar Ahmed — Cybersecurity Researcher',invalid:'First enter ciphertext containing English letters (A–Z).',invalidSecret:'Enter an English message to create a challenge.',testing:'Trying key {k} of 25…',whyWords:'Recognizable English words include {words}. This supports the suggested result.',whyStat:'This candidate scores best against English letter patterns among the 26 keys.',whyShort:'This message is very short; different keys may produce meaningful text. The guess is uncertain. Compare all candidates.',whyLong:'The tool uses English words and letter frequency. Even a plausible result needs independent evidence for certainty.',keyLabel:'Key',secretAnswer:'Actual key: {k} — Message: {text}',englishOnly:'Note: this cipher operates on English A–Z letters only.',sharedHint:'🔗 Challenge ciphertext loaded from the link. Click Break Cipher!',shareChallenge:'🔗 Copy challenge link',shareWarning:'The link contains ciphertext only, not the key or original text. Never use real secrets.',shareCopied:'Challenge link copied ✓',cipherCopied:'Before publishing, only the ciphertext was copied. Links work on the live website.',shareTooLong:'Too long for a challenge link. Use a message under 300 characters.',shareFailed:'Could not copy automatically. Please copy the ciphertext manually.',buttonReady:'⚡ Break Cipher',ctfOptions:'🎯 Have a CTF flag? Optional setting',ctfPrefixLabel:'Expected flag prefix (if known)',ctfPrefixHint:'For example VOID, HTB or FLAG, without braces. This is the challenge flag format, not the secret key or plaintext.',ctfResult:'Most likely CTF flag candidate',ctfWhyPrefix:'The candidate matches the expected prefix {prefix}, strong evidence for this key but not absolute proof.',ctfWhyKnown:'This candidate starts with a recognized CTF prefix: {prefix}.',ctfWhyWords:'After normalizing leetspeak, these words were found: {words}.',ctfWhyWeak:'A flag-shaped message was detected, but evidence is weak. Review all 26 candidates or enter the known flag prefix.',ctfAuto:'CTF flag format detected; flag-aware ranking was used instead of ordinary English-text ranking.'
+   headlineLead:'Break',headlineFocus:'Caesar Cipher',headlineEnd:'without the key',title:'Break Caesar Cipher without the key',intro:'Got encrypted text? Paste it here. The tool uses brute force to test all 26 keys and suggests the most likely original message. No key or plaintext required.',step1:'Enter ciphertext',step2:'Click Break Cipher',step3:'See the result and why',inputTitle:'What is the encrypted message?',noKey:'No key needed',inputLabel:'Ciphertext',inputHint:'Enter English-letter ciphertext. Don’t have any? Try one of the examples.',examples:'Quick examples:',shortExample:'Short example: JG',attackBtn:'⚡ Break Cipher',privacy:'Analysis runs in your browser. Messages and keys are not stored by this app.',resultTitle:'Most likely English plaintext',possible:'✓ Likely, not proven',key:'Likely key',tested:'Keys tested',why:'Why was this result chosen?',copy:'Copy plaintext',copied:'Copied ✓',again:'Try another message',allKeys:'See all 26 results (optional)',keysHint:'The tool tests keys 0–25. Every candidate is mathematically valid; ranking is only a language-based guess.',colKey:'Key',colText:'Decrypted text',challengeTitle:'🎓 Want a classroom challenge? Click here',challengeIntro:'Write an English message. The site encrypts it using a hidden random key. Give students only the ciphertext and let them attack it.',secretLabel:'Secret message (before encryption)',generate:'🔒 Create challenge with hidden key',reveal:'Reveal real answer',challengeMade:'Give this ciphertext to your classmates:',useChallenge:'Try breaking it above ↑',footer:'© 2026 CipherScope • Developed by Ammar Ahmed — Cybersecurity Researcher',invalid:'First enter ciphertext containing English letters (A–Z).',invalidSecret:'Enter an English message to create a challenge.',testing:'Trying key {k} of 25…',whyWords:'Recognizable English words include {words}. This supports the suggested result.',whyStat:'This candidate scores best against English letter patterns among the 26 keys.',whyShort:'This message is very short; different keys may produce meaningful text. The guess is uncertain. Compare all candidates.',whyLong:'The tool uses English words and letter frequency. Even a plausible result needs independent evidence for certainty.',keyLabel:'Key',secretAnswer:'Actual key: {k} — Message: {text}',englishOnly:'Note: this cipher operates on English A–Z letters only.',sharedHint:'🔗 Challenge ciphertext loaded from the link. Click Break Cipher!',shareChallenge:'🔗 Copy challenge link',shareWarning:'The link contains ciphertext only, not the key or original text. Never use real secrets.',shareCopied:'Challenge link copied ✓',cipherCopied:'Before publishing, only the ciphertext was copied. Links work on the live website.',shareTooLong:'Too long for a challenge link. Use a message under 300 characters.',shareFailed:'Could not copy automatically. Please copy the ciphertext manually.',buttonReady:'⚡ Break Cipher',ctfOptions:'🎯 Have a CTF flag? Optional setting',ctfPrefixLabel:'Expected flag prefix (if known)',ctfPrefixHint:'For example VOID, HTB or FLAG, without braces. This is the challenge flag format, not the secret key or plaintext.',ctfResult:'Most likely CTF flag candidate',ctfWhyPrefix:'The candidate matches the expected prefix {prefix}, strong evidence for this key but not absolute proof.',ctfWhyKnown:'This candidate starts with a recognized CTF prefix: {prefix}.',ctfWhyWords:'After normalizing leetspeak, these words were found: {words}.',ctfWhyWeak:'A flag-shaped message was detected, but evidence is weak. Review all 26 candidates or enter the known flag prefix.',ctfAuto:'CTF flag format detected; flag-aware ranking was used instead of ordinary English-text ranking.'
   }
  };
 
  const MODE_TX={
   ar:{
    caesar:'قيصر • Caesar',vigenere:'فينير • Vigenère',
+   dualTitle:'شفرتي قيصر وفينير',
+   dualIntro:'مختبر تفاعلي لكسر شفرات Caesar وVigenère بدون معرفة المفتاح. اختَر الشفرة، أدخل النص المشفّر، وشاهد النتيجة وتحليلها.',
+   caesarHelp:'قيصر (Caesar): نجرّب المفاتيح الـ26 كلها، ثم نرتّب النتائج حسب الكلمات وتكرار الحروف.',
+   vigenereHelp:'فينير (Vigenère): نخمّن طول كلمة المفتاح باستخدام Kasiski وIndex of Coincidence، ثم نختبر مرشّحات بتحليل الحروف والكلمات الإنجليزية. النص الأطول يعطي نتيجة أدق.',
+   advanced:'خيارات تحليل فينير المتقدمة (اختياري)',
+   lengthLabel:'طول كلمة المفتاح إذا تعرفه — اختياري',
+   lengthHint:'اتركه فارغاً حتى يقدّره الموقع تلقائياً. هذا طول المفتاح، مو المفتاح نفسه.',
+   invalidLength:'أدخل طول مفتاح صحيح بين 1 و16، أو اتركه فارغاً.',
+   confidenceStrong:'مؤشرات قوية',confidenceModerate:'مؤشرات متوسطة',confidenceLow:'مؤشرات ضعيفة',
+   fixedEvidence:'استخدمنا طول المفتاح {length} بناءً على اختيارك.',
+   automaticEvidence:'اختبرنا أطوال كلمات المفتاح حتى {length} حرفاً.',
+
    vHeadline:'شفرة فينير',vIntro:'عندك رسالة مشفّرة بفينير؟ أدخل النص فقط. نحاول تقدير طول المفتاح باستخدام Kasiski وIndex of Coincidence، ثم نستخرج الكلمة المفتاحية الأرجح بتحليل تكرار الحروف. ما تحتاج تعرف المفتاح الأصلي.',
    vHint:'الأفضل استخدام رسالة إنجليزية طويلة (80 حرفاً أو أكثر). الرسائل القصيرة قد لا تكفي لاكتشاف المفتاح.',
    vButton:'⚡ حاول كسر فينير الآن',vResult:'النص الأرجح بعد هجوم فينير',vKey:'المفتاح المرجّح (كلمة)',
@@ -30,6 +42,17 @@
   },
   en:{
    caesar:'Caesar',vigenere:'Vigenère',
+   dualTitle:'Caesar & Vigenère',dualIntro:'An interactive cryptanalysis lab for Caesar and Vigenère. Choose a cipher, paste the ciphertext, and inspect the suggested plaintext and reasoning. No key required.',
+   caesarHelp:'Caesar: test all 26 shifts and rank candidate plaintexts using English language evidence.',
+   vigenereHelp:'Vigenère: estimate keyword length using Kasiski and Index of Coincidence, then rank keys using letter frequencies and English word evidence. Longer messages work better.',
+   advanced:'Advanced Vigenère analysis (optional)',
+   lengthLabel:'Known keyword length (optional)',
+   lengthHint:'Leave blank to let the analyzer estimate the length. This is not the actual keyword.',
+   invalidLength:'Enter a key length from 1 to 16, or leave it empty.',
+   confidenceStrong:'Strong indicators',confidenceModerate:'Moderate indicators',confidenceLow:'Weak indicators',
+   fixedEvidence:'Used your key-length hint: {length} characters.',
+   automaticEvidence:'Searched keyword lengths up to {length} characters.',
+
    vHeadline:'Vigenère Cipher',vIntro:'Got Vigenère ciphertext? Paste it here. We estimate key length using Kasiski and the Index of Coincidence, then rank likely keyword keys with letter-frequency analysis. No original key required.',
    vHint:'Long English ciphertext (80+ letters) works best. Short messages may not provide enough evidence to recover a key.',
    vButton:'⚡ Attack Vigenère Cipher',vResult:'Likely Vigenère plaintext',vKey:'Likely keyword key',
@@ -113,7 +136,7 @@
  function localize(){
   document.documentElement.lang=language;
   document.documentElement.dir=language==='ar'?'rtl':'ltr';
-  document.title=language==='ar'?'CaesarScope — اكسر قيصر وفينير':'CaesarScope — Break Caesar & Vigenère';
+  document.title=language==='ar'?'CipherScope — هجوم قيصر وفينير':'CipherScope — Caesar & Vigenère Attack Lab';
   document.querySelectorAll('[data-t]').forEach(el=>{el.textContent=t(el.dataset.t);});
   $('language').textContent=language==='ar'?'English / EN':'العربية / AR';
   const vig=mode==='vigenere';
@@ -125,8 +148,13 @@
     el.setAttribute('aria-pressed',String(mode===name));
   }
   $('ctfBox').style.display=vig?'none':'';
-  $('headlineFocus').textContent=vig?modeText('vHeadline'):t('headlineFocus');
-  $('introText').textContent=vig?modeText('vIntro'):t('intro');
+  $('vigAdvanced').hidden=!vig;
+  $('headlineFocus').textContent=modeText('dualTitle');
+  $('introText').textContent=modeText('dualIntro');
+  $('modeExplanation').textContent=modeText(vig?'vigenereHelp':'caesarHelp');
+  $('advancedLabel').textContent=modeText('advanced');
+  $('vigLengthLabel').textContent=modeText('lengthLabel');
+  $('vigLengthHint').textContent=modeText('lengthHint');
   $('inputHintText').textContent=vig?modeText('vHint'):t('inputHint');
   $('attack').textContent=vig?modeText('vButton'):t('attackBtn');
   $('keyLabel').textContent=vig?modeText('vKey'):t('key');
@@ -153,7 +181,7 @@
   if(isRunning||mode===next)return;
   mode=next;lastChallenge=null;$('challengeResult').style.display='none';$('reveal').disabled=true;
   $('secretReveal').style.display='none';$('cipher').value='';$('secret').value='';$('ctfPrefix').value='';
-  $('sharedHint').hidden=true;clearOutput();localize();
+  $('sharedHint').hidden=true;$('vigLength').value='';clearOutput();localize();
  }
  function error(id,msg){$(id).textContent=msg;$(id).style.display=msg?'block':'none';}
  function renderResult(result){
@@ -164,7 +192,11 @@
     $('bestKey').textContent=best.key;
     $('testedCount').textContent=String(result.keysScored);
     $('resultTitle').textContent=modeText('vResult');
-    const pieces=[modeText('vEvidence',{count:result.keysScored,len:result.lengthsChecked})];
+    const conf=$('confidenceTag');
+    conf.hidden=false;conf.className='confidenceTag '+(result.confidence||'low');
+    conf.textContent=modeText('confidence'+(result.confidence==='strong'?'Strong':result.confidence==='moderate'?'Moderate':'Low'));
+    const pieces=[modeText('vEvidence',{count:result.keysScored,len:result.maximumKeyLength})];
+    pieces.push(modeText(result.fixedLength?'fixedEvidence':'automaticEvidence',{length:result.maximumKeyLength}));
     if(best.found.length)pieces.push(modeText('vWords',{words:best.found.slice(0,5).join(', ')}));
     if(result.tooShort)pieces.push(modeText('vShort'));
     pieces.push(modeText('vUncertain'));
@@ -178,7 +210,7 @@
     }
     return;
   }
-  $('result').classList.remove('vigenereResult');
+  $('result').classList.remove('vigenereResult');$('confidenceTag').hidden=true;
   $('testedCount').textContent='26 / 26';
   $('result').style.display='block';$('plaintext').textContent=result.best.text;$('bestKey').textContent=String(result.best.key).padStart(2,'0');
   const best=result.best;
@@ -205,6 +237,9 @@
   if(isRunning)return;
   const cipher=$('cipher').value.trim();
   if(!/[A-Za-z]/.test(cipher)){error('error',t('invalid'));return;}
+  const rawLength=mode==='vigenere'?$('vigLength').value.trim():'';
+  const keyLength=rawLength===''?0:Number(rawLength);
+  if(rawLength!==''&&(!Number.isInteger(keyLength)||keyLength<1||keyLength>16)){error('error',modeText('invalidLength'));return;}
   error('error','');isRunning=true;$('attack').disabled=true;
   $('modeCaesar').disabled=true;$('modeVigenere').disabled=true;
   $('result').style.display='none';$('progress').style.display='block';$('progressText').style.display='block';$('progressBar').style.width='0%';
@@ -219,7 +254,7 @@
     $('progressBar').style.width='15%';
     window.setTimeout(()=>{
       try{
-        const outcome=globalThis.CaesarScopeVigenere.attack(cipher);
+        const outcome=globalThis.CaesarScopeVigenere.attack(cipher,keyLength?{keyLength}:{});
         if(!outcome.ranked.length)throw Error('No candidate keys');
         $('progressBar').style.width='100%';
         finish({mode:'vigenere',best:outcome.ranked[0],...outcome});
@@ -279,6 +314,7 @@
  for(const button of document.querySelectorAll('[data-sample]'))button.addEventListener('click',()=>{$('cipher').value=button.dataset.sample;clearOutput();$('cipher').focus();});
  $('cipher').addEventListener('input',clearOutput);
  $('ctfPrefix').addEventListener('input',clearOutput);
+ $('vigLength').addEventListener('input',clearOutput);
  $('attack').addEventListener('click',startAttack);
  $('rerun').addEventListener('click',()=>{$('cipher').value='';clearOutput();$('cipher').focus();$('cipher').scrollIntoView({block:'center',behavior:'smooth'});});
  $('copy').addEventListener('click',async()=>{if(!lastResult)return;try{await navigator.clipboard.writeText(lastResult.best.text);$('copy').textContent=t('copied');window.setTimeout(()=>$('copy').textContent=t('copy'),1300);}catch(e){const range=document.createRange();range.selectNodeContents($('plaintext'));const sel=window.getSelection();sel.removeAllRanges();sel.addRange(range);}});
