@@ -11,7 +11,7 @@ This is a static site with no backend, sessions, authentication, cookies, databa
 ## Verification performed
 
 - `node --check app.js`: syntax passed.
-- Static source scan found **0** calls to `eval`, `new Function`, `innerHTML`, `outerHTML`, `insertAdjacentHTML`, `document.write`, `fetch`, `XMLHttpRequest`, `WebSocket`, and **0** obvious embedded API tokens / private keys in the scanned code.
+- At the original review, static source scan found **0** calls to `eval`, `new Function`, `innerHTML`, `outerHTML`, `insertAdjacentHTML`, `document.write`, `fetch`, `XMLHttpRequest`, `WebSocket`, and **0** obvious embedded API tokens / private keys in the scanned code.
 - HTML structural checks: no external scripts, iframes, forms or inline event handlers; local stylesheet and script only.
 - Browser-based (in-memory) smoke tests: `KHOOR ZRUOG → HELLO WORLD` (`key 3`), 26 candidate rows, RTL/LTR switching, challenge generation/reveal/use, and injected `<img onerror>` payload rendered as ordinary text. No uncaught JS exceptions.
 - Layout checks at **320, 390, 820 and 1440 px** detected no horizontal overflow. These are smoke tests, not an exhaustive device/browser compatibility matrix.
@@ -26,7 +26,7 @@ This is a static site with no backend, sessions, authentication, cookies, databa
 - Netlify adds headers denying framing (clickjacking), MIME sniffing and browser permissions. GitHub Pages does not honor `_headers`, and header-level settings there are controlled by GitHub.
 - Limit input to 5000 characters and shared challenge ciphertext to 300 characters; overlong URL input is ignored.
 - Shared URL carries **ciphertext only**, never secret key or original message; use no real secrets because Caesar cipher is trivially reversible.
-- No remote dependencies, no `eval`, no external links/forms, no secrets embedded.
+- No JavaScript dependencies, no `eval`, no external forms, and no secrets embedded. The optional Almarai font is loaded from Google Fonts; it does not receive ciphertext input.
 
 ## Residual caveats
 
@@ -44,3 +44,14 @@ Use the repository's GitHub Issues for non-sensitive bug reports. For sensitive 
 - CTF prefix field is read as ordinary text only; candidate strings render with `textContent`, never `innerHTML`.
 - Optional prefix is not serialized into shared challenge URLs; no new external requests, dependencies, or remote APIs.
 - Review scope is source inspection and local browser checks, not a hosted penetration test.
+
+## Vigenère attack extension — review 2026-11-03
+
+- Added a separate local `vigenere.js` module and a two-option Caesar / Vigenère mode selector.
+- Vigenère uses Kasiski repeated-trigram evidence, Index of Coincidence, per-column chi-square, candidate-key search, and English-word ranking. It does **not** exhaust all possible Vigenère passwords or guarantee recovery.
+- Input remains limited by the HTML `maxlength` (5,000 characters); ranking reads at most the first 1,600 characters and output is written through `textContent`.
+- No additional API, analytics, database, credentials, web requests, dynamic HTML, or new third-party JavaScript was introduced.
+- Source scan covered `index.html`, `style.css`, `app.js`, `vigenere.js`, and `_headers`. Both JavaScript files passed syntax checks; no use of `eval`, `new Function`, `innerHTML`, `fetch`, `XMLHttpRequest`, or local storage was found.
+- In-memory DOM smoke tests: Caesar known sample (key 3), Vigenère long English sample (key LEMON), mode switching, English / Arabic translation, and Vigenère challenge generation / key reveal completed.
+- Three additional prepared long English messages with known Vigenère keywords `LEMON`, `CIPHER`, and `SECURITY` were ranked correctly in local deterministic checks. These are test cases, not a statistical accuracy guarantee.
+- **Not independently verified:** Actual public GitHub Pages response headers, live phone screenshots, penetration test against the deployed website, or universal ciphertext recovery.
