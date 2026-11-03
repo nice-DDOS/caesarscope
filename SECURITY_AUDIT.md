@@ -55,3 +55,12 @@ Use the repository's GitHub Issues for non-sensitive bug reports. For sensitive 
 - In-memory DOM smoke tests: Caesar known sample (key 3), Vigenère long English sample (key LEMON), mode switching, English / Arabic translation, and Vigenère challenge generation / key reveal completed.
 - Three additional prepared long English messages with known Vigenère keywords `LEMON`, `CIPHER`, and `SECURITY` were ranked correctly in local deterministic checks. These are test cases, not a statistical accuracy guarantee.
 - **Not independently verified:** Actual public GitHub Pages response headers, live phone screenshots, penetration test against the deployed website, or universal ciphertext recovery.
+
+## CipherScope refinement (November 2026)
+
+- Updated dual-cipher branding and guidance without renaming the existing repository or altering its public URL.
+- Vigenère analysis now evaluates additional common-key candidates and short unspaced-text hints; the method remains ciphertext-only.
+- An optional length hint (1–16) constrains the key-length search and is validated before use.
+- Evidence-strength labels are based on text length, lexical support, and score separation. They must not be interpreted as calibrated accuracy or as cryptographic proof.
+- The analyzer's deterministic tests recovered selected known keywords on short classroom examples and long English passages; real-world performance varies with text length, language, key choice, and formatting.
+- The additional UI uses text-only DOM updates, keeping the existing no-user-controlled-HTML pattern.
