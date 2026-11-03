@@ -125,3 +125,21 @@
 .vigenereResult .candidateRow span:last-child{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .vigenereResult #bestKey{font-family:Consolas,"Courier New",monospace;overflow-wrap:anywhere}
 @media(max-width:480px){.brandSub{font-size:9px;max-width:170px}.modeExplanation{font-size:12px}}
+
+
+/* Compact, accessible lesson available inside each cipher tab. */
+.summaryToggle{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid #4f6b86;background:#1b354a;color:#e8f4ff;border-radius:12px;padding:12px 15px;text-align:start;font-size:14px;font-weight:800;margin:0 0 16px;transition:background .15s,border-color .15s}
+.summaryToggle:hover,.summaryToggle[aria-expanded="true"]{background:#24465d;border-color:#ff8b3b}
+.summaryToggle:focus-visible{outline:3px solid var(--good);outline-offset:2px}
+.summaryChevron{font-size:22px;color:var(--orange);transition:transform .15s;line-height:1;flex:none}
+.summaryToggle[aria-expanded="true"] .summaryChevron{transform:rotate(180deg)}
+.cipherSummaryPanel{background:#142437;border:1px solid #3d5368;border-radius:13px;padding:20px;margin:-4px 0 20px;box-shadow:inset 0 1px rgba(255,255,255,.025)}
+.cipherSummaryPanel[hidden]{display:none}
+.cipherSummaryPanel h3{font-size:17px;line-height:1.7;color:#ffb981;margin:0 0 15px}
+.summarySection{margin:0 0 13px}
+.summarySectionTitle{font-size:13px;font-weight:800;color:#f4f6f8;margin:0 0 5px}
+.cipherSummaryPanel p{font-size:13px;line-height:2;color:#c9d7e5;margin:0}
+.summaryFormula,.summaryExample{background:#0d1d2b;border:1px solid #30465c;padding:12px;border-radius:9px;margin:0 0 13px}
+.summaryFormula code,.summaryExample code{display:block;direction:ltr;text-align:left;unicode-bidi:isolate;font-size:12px;line-height:1.75;color:#a8f0d1;white-space:pre-wrap;overflow-wrap:anywhere;font-family:Consolas,Monaco,monospace}
+.cipherSummaryPanel .summaryNote{border-inline-start:3px solid var(--orange);padding-inline-start:10px;color:#b9c6d5;font-size:12px}
+@media(max-width:420px){.cipherSummaryPanel{padding:15px}.summaryToggle{font-size:12px}.cipherSummaryPanel h3{font-size:15px}.summaryFormula code{font-size:11px}}
