@@ -1,4 +1,4 @@
-# CipherScope 🔐 — Caesar & Vigenère Attack Lab
+# CaesarScope 🔐 — Caesar & Vigenère Attack Lab
 
 **Developed by Ammar Ahmed — Cybersecurity Researcher**  
 **المشروع من إعداد وتطوير عمار أحمد — باحث في الأمن السيبراني**  
@@ -74,9 +74,26 @@ MIT — see [LICENSE](LICENSE). Copyright © 2026 Ammar Ahmed (nice-DDOS).
 
 ## Improved interface and Vigenère results (November 2026)
 
-- The product is now presented as **CipherScope — Caesar & Vigenère Attack Lab**. The existing repository name and GitHub Pages URL remain unchanged to avoid breaking previously shared links.
+- The original **CaesarScope** name is retained, now with the subtitle **Caesar & Vigenère Cryptanalysis Lab**. The existing repository name and GitHub Pages URL remain unchanged to avoid breaking previously shared links.
 - One simple page for both ciphers; the selected mode explains its attack method.
 - Vigenère's result includes a likely keyword, a compact list of alternatives, the number of evaluated key candidates, and an **evidence strength** label (strong / moderate / weak). This is a **heuristic signal, not a verified probability**.
 - Optional advanced setting: enter the **keyword length**, not the keyword, to narrow the search (1–16). Leaving it empty runs an automatic analysis.
 - Common-word key candidates and unspaced-text clues supplement frequency statistics; no actual key is assumed. Short ciphertext remains intrinsically ambiguous.
 - Known-key deterministic checks: `LEMON` with `ATTACK AT DAWN` and three longer instructor-style plaintexts; additional long messages were tested against a selection of keywords. These tests do **not** establish a universal success rate.
+
+## Student-friendly cipher summaries
+
+Each cipher mode includes a **Cipher Summary / ملخص الشفرة** button. Opening it reveals a short bilingual lesson covering:
+
+- The underlying principle of Caesar or Vigenère
+- Encryption and decryption mechanics
+- The mathematical formula
+- A concrete worked example
+- A brief explanation of how that cipher is attacked
+- An important note about the cipher's security limitations
+
+The panel is initially collapsed to keep the interface uncluttered. It closes when switching modes and its content follows the Arabic/English language toggle. Summaries are educational and do not change cryptanalysis results.
+
+**Caesar example:** `HELLO` with shift 3 → `KHOOR`.
+
+**Vigenère example:** `ATTACKATDAWN` with keyword `LEMON` → `LXFOPVEFRNHR`.
