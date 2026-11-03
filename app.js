@@ -9,6 +9,50 @@
    headlineLead:'Break',headlineFocus:'Caesar Cipher',headlineEnd:'without the key',title:'Break Caesar Cipher without the key',intro:'Got encrypted text? Paste it here. The tool uses brute force to test all 26 keys and suggests the most likely original message. No key or plaintext required.',step1:'Enter ciphertext',step2:'Click Break Cipher',step3:'See the result and why',inputTitle:'What is the encrypted message?',noKey:'No key needed',inputLabel:'Ciphertext',inputHint:'Enter English-letter ciphertext. Don’t have any? Try one of the examples.',examples:'Quick examples:',shortExample:'Short example: JG',attackBtn:'⚡ Break Cipher',privacy:'Analysis runs in your browser. Messages and keys are not stored by this app.',resultTitle:'Most likely English plaintext',possible:'✓ Likely, not proven',key:'Likely key',tested:'Keys tested',why:'Why was this result chosen?',copy:'Copy plaintext',copied:'Copied ✓',again:'Try another message',allKeys:'See all 26 results (optional)',keysHint:'The tool tests keys 0–25. Every candidate is mathematically valid; ranking is only a language-based guess.',colKey:'Key',colText:'Decrypted text',challengeTitle:'🎓 Want a classroom challenge? Click here',challengeIntro:'Write an English message. The site encrypts it using a hidden random key. Give students only the ciphertext and let them attack it.',secretLabel:'Secret message (before encryption)',generate:'🔒 Create challenge with hidden key',reveal:'Reveal real answer',challengeMade:'Give this ciphertext to your classmates:',useChallenge:'Try breaking it above ↑',footer:'© 2026 CaesarScope • Developed by Ammar Ahmed — Cybersecurity Researcher',invalid:'First enter ciphertext containing English letters (A–Z).',invalidSecret:'Enter an English message to create a challenge.',testing:'Trying key {k} of 25…',whyWords:'Recognizable English words include {words}. This supports the suggested result.',whyStat:'This candidate scores best against English letter patterns among the 26 keys.',whyShort:'This message is very short; different keys may produce meaningful text. The guess is uncertain. Compare all candidates.',whyLong:'The tool uses English words and letter frequency. Even a plausible result needs independent evidence for certainty.',keyLabel:'Key',secretAnswer:'Actual key: {k} — Message: {text}',englishOnly:'Note: this cipher operates on English A–Z letters only.',sharedHint:'🔗 Challenge ciphertext loaded from the link. Click Break Cipher!',shareChallenge:'🔗 Copy challenge link',shareWarning:'The link contains ciphertext only, not the key or original text. Never use real secrets.',shareCopied:'Challenge link copied ✓',cipherCopied:'Before publishing, only the ciphertext was copied. Links work on the live website.',shareTooLong:'Too long for a challenge link. Use a message under 300 characters.',shareFailed:'Could not copy automatically. Please copy the ciphertext manually.',buttonReady:'⚡ Break Cipher',ctfOptions:'🎯 Have a CTF flag? Optional setting',ctfPrefixLabel:'Expected flag prefix (if known)',ctfPrefixHint:'For example VOID, HTB or FLAG, without braces. This is the challenge flag format, not the secret key or plaintext.',ctfResult:'Most likely CTF flag candidate',ctfWhyPrefix:'The candidate matches the expected prefix {prefix}, strong evidence for this key but not absolute proof.',ctfWhyKnown:'This candidate starts with a recognized CTF prefix: {prefix}.',ctfWhyWords:'After normalizing leetspeak, these words were found: {words}.',ctfWhyWeak:'A flag-shaped message was detected, but evidence is weak. Review all 26 candidates or enter the known flag prefix.',ctfAuto:'CTF flag format detected; flag-aware ranking was used instead of ordinary English-text ranking.'
   }
  };
+
+ const MODE_TX={
+  ar:{
+   caesar:'قيصر • Caesar',vigenere:'فينير • Vigenère',
+   vHeadline:'شفرة فينير',vIntro:'عندك رسالة مشفّرة بفينير؟ أدخل النص فقط. نحاول تقدير طول المفتاح باستخدام Kasiski وIndex of Coincidence، ثم نستخرج الكلمة المفتاحية الأرجح بتحليل تكرار الحروف. ما تحتاج تعرف المفتاح الأصلي.',
+   vHint:'الأفضل استخدام رسالة إنجليزية طويلة (80 حرفاً أو أكثر). الرسائل القصيرة قد لا تكفي لاكتشاف المفتاح.',
+   vButton:'⚡ حاول كسر فينير الآن',vResult:'النص الأرجح بعد هجوم فينير',vKey:'المفتاح المرجّح (كلمة)',
+   vTested:'مفاتيح مرشّحة فُحصت',vWhy:'ليش رجّحنا هذا المفتاح؟',
+   vAll:'أفضل 10 نتائج مرشّحة (اختياري)',
+   vAllHint:'فينير تستخدم كلمة مفتاح، لذلك عدد المفاتيح الممكنة كبير جداً. نحلل أطوال المفاتيح من 1 إلى 16 ونرتّب مرشّحات إحصائية؛ هذه ليست تجربة شاملة لكل الكلمات الممكنة.',
+   vEvidence:'فُحصت {count} كلمة مفتاح مرشّحة، مع تحليل طول المفتاح (حتى {len} أحرف) باستخدام Kasiski وIndex of Coincidence، ثم تكرار الحروف والكلمات الإنجليزية.',
+   vWords:'من الكلمات الإنجليزية الداعمة: {words}.',
+   vShort:'تنبيه: النص قصير، لذلك لا نكدر نضمن تحديد المفتاح. جرّب نصاً أطول وراجع المرشّحات.',
+   vUncertain:'هذه أقرب نتيجة حسب التحليل، وليست دليلاً قاطعاً على صحة المفتاح أو الرسالة.',
+   vRunning:'جارٍ تحليل طول المفتاح والحروف…',
+   vChallengeIntro:'اكتب رسالة إنجليزية طويلة. الموقع يشفّرها بكلمة مفتاح مخفية، وتكدر تتحدى الطلاب بكسرها من النص المشفّر وحده.',
+   vSecretPlaceholder:'WE STUDY CRYPTOGRAPHY BECAUSE ...',
+   sample1:'نص طويل 1',sample2:'نص طويل 2',sample3:'نص قصير (صعب)',sample4:'نص طويل 3'
+  },
+  en:{
+   caesar:'Caesar',vigenere:'Vigenère',
+   vHeadline:'Vigenère Cipher',vIntro:'Got Vigenère ciphertext? Paste it here. We estimate key length using Kasiski and the Index of Coincidence, then rank likely keyword keys with letter-frequency analysis. No original key required.',
+   vHint:'Long English ciphertext (80+ letters) works best. Short messages may not provide enough evidence to recover a key.',
+   vButton:'⚡ Attack Vigenère Cipher',vResult:'Likely Vigenère plaintext',vKey:'Likely keyword key',
+   vTested:'Candidate keys evaluated',vWhy:'Why was this key suggested?',
+   vAll:'Top 10 candidate keys (optional)',
+   vAllHint:'Vigenère has a huge keyword key space. We analyze key lengths up to 16 and rank statistical candidates; this is not exhaustive brute force over every possible keyword.',
+   vEvidence:'Evaluated {count} candidate keywords, testing key lengths up to {len} with Kasiski, Index of Coincidence, letter frequencies, and English-language scoring.',
+   vWords:'Recognizable English words include: {words}.',
+   vShort:'Warning: this ciphertext is short, so a recovered key cannot be reliably confirmed. Try a longer message and inspect alternatives.',
+   vUncertain:'This is a statistically likely result, not proof of the original plaintext or key.',
+   vRunning:'Analyzing key lengths and letter patterns…',
+   vChallengeIntro:'Write a long English message. The site encrypts it with a hidden keyword. Challenge classmates to recover it from ciphertext alone.',
+   vSecretPlaceholder:'WE STUDY CRYPTOGRAPHY BECAUSE ...',
+   sample1:'Long sample 1',sample2:'Long sample 2',sample3:'Short (uncertain)',sample4:'Long sample 3'
+  }
+ };
+ const modeText=(key,vars={})=>(MODE_TX[language][key]||key).replace(/\{(\w+)\}/g,(_,k)=>String(vars[k]??''));
+ const VIG_SAMPLES=[
+  ['LEMON','WE STUDY CRYPTOGRAPHY BECAUSE PROTECTING INFORMATION REQUIRES KNOWING HOW ATTACKERS BREAK WEAK CIPHERS. THE VIGENERE CIPHER REPEATS A SECRET KEY AND USES DIFFERENT SHIFTS FOR EACH LETTER. BY ANALYZING THE TEXT WE CAN ESTIMATE THE LENGTH OF THE KEY AND RECOVER IT WITHOUT KNOWING THE ORIGINAL MESSAGE.'],
+  ['CIPHER','IN OUR CYBERSECURITY LAB WE WANT TO SHOW HOW CLASSICAL ENCRYPTION FAILS WHEN THE KEY REPEATS. ANALYZING LETTER FREQUENCIES IN DIFFERENT COLUMNS REVEALS THE SHIFT OF EACH KEY LETTER. A SUCCESSFUL ATTACK MUST ALSO EXPLAIN WHY A RESULT IS MORE LIKELY THAN OTHER POSSIBLE TEXTS.'],
+  ['LEMON','ATTACK AT DAWN'],
+  ['SECURITY','THE PURPOSE OF THIS EXPERIMENT IS TO SHOW WHY CLASSICAL CIPHERS DO NOT PROVIDE STRONG SECURITY. A LONG ENGLISH MESSAGE CAN REVEAL A REPEATED VIGENERE KEY THROUGH STATISTICAL ANALYSIS. WE STUDY THE FREQUENCY OF LETTERS AND THE LENGTH OF A KEY TO RECOVER THE ORIGINAL INFORMATION WITHOUT KNOWING THE SECRET KEY.']
+ ];
  const FREQ=[8.167,1.492,2.782,4.253,12.702,2.228,2.015,6.094,6.966,.153,.772,4.025,2.406,6.749,7.507,1.929,.095,5.987,6.327,9.056,2.758,.978,2.36,.15,1.974,.074];
  const WORDS=new Set(('A I THE AND OF TO IN IS IT YOU THAT HE WAS FOR ON ARE AS WITH HIS THEY AT BE THIS HAVE FROM OR ONE HAD BY WORD BUT NOT WHAT ALL WERE WE WHEN YOUR CAN SAID THERE USE AN EACH WHICH SHE DO HOW THEIR IF WILL UP OTHER ABOUT OUT MANY THEN THEM THESE SO SOME HER WOULD MAKE LIKE HIM INTO TIME HAS LOOK TWO MORE WRITE GO SEE NUMBER NO WAY COULD PEOPLE MY THAN FIRST WATER BEEN CALL WHO ITS NOW FIND LONG DOWN DAY DID GET COME MADE MAY PART HELLO WORLD SECRET ATTACK WRONG WAS CAESAR FLAG CTF PICOHTF CODE HACK ATTACK DAWN MEET LIBRARY AFTER CLASS CYBER SECURITY STARTS CURIOSITY MESSAGE HIDDEN PLAIN SIGHT BREAK CAESAR CIPHER WITHOUT KEY EVERY CLASSICAL WEAKNESS ENCRYPTION EASY CRYPTOGRAPHY STUDENTS PROFESSOR UNIVERSITY TEST ENGLISH TEXT SAMPLE TESTING HERE GOOD MORNING NIGHT SYSTEM DATA SAFE STRONG WEAK SHIFT LETTER LETTERS POWER EDUCATION LEARN DEFEND TODAY TOMORROW CRYPTO ANALYSIS RECOVER FINDING CAUGHT NEVER TRUST PASSWORD SEND HELP PLEASE THANK LEARNING THINK SMART WORKS SIMPLE CHALLENGE CRACK SOMEONE SECRETLY CODE FRIEND FRIENDS EXAMPLE CRACKED RECOVERED ROTATION').split(' '));
  const KNOWN_CTF_PREFIXES = new Set('FLAG CTF VOID HTB THM HMS PICOCTF PICOCTFDUCTF TRYHACKME HACKTHEBOX CRYPTO CYBER SECURE FLAGCTF'.split(' '));
@@ -37,7 +81,7 @@
  }
  const BIGRAMS=new Set('TH HE IN ER AN RE ON AT EN ND TI ES OR TE OF ED IS IT AL AR ST TO NT NG SE HA AS OU IO LE VE CO ME DE HI RI RO IC NE EA RA CE LI CH LL BE MA SI OM UR'.split(' '));
  const TRIGRAMS=new Set('THE AND ING HER ERE ENT THA NTH WAS ETH FOR DTH HAT ION TIO VER TER HIS EST ALL RES ATI OTH MEN ERT INT EAN HEN ESE TED ORE HIN PRO OUR COM REA NOT YOU OUT ONE WIT THI SEC RET ATT ACK CAE SAR CIP PHE'.split(' '));
- let language='ar',lastResult=null,lastChallenge=null,isRunning=false;
+ let language='ar',mode=new URL(window.location.href).searchParams.get('mode')==='vigenere'?'vigenere':'caesar',lastResult=null,lastChallenge=null,isRunning=false;
  function t(key,vars={}){return (texts[language][key] || key).replace(/\{(\w+)\}/g,(_,k)=>String(vars[k]??''));}
  function shift(text,key){return text.replace(/[A-Za-z]/g,c=>{const base=c>='a'&&c<='z'?97:65;return String.fromCharCode((c.charCodeAt(0)-base-key+26)%26+base);});}
  function encrypt(text,key){return shift(text,(26-key)%26);}
@@ -66,45 +110,148 @@
   }).sort((a,b)=>a.score-b.score || a.key-b.key);
   return {ranked,isCTF};
  }
- function localize(){document.documentElement.lang=language;document.documentElement.dir=language==='ar'?'rtl':'ltr';document.title=language==='ar'?'CaesarScope — اكسر شفرة قيصر':'CaesarScope — Break Caesar Cipher';
+ function localize(){
+  document.documentElement.lang=language;
+  document.documentElement.dir=language==='ar'?'rtl':'ltr';
+  document.title=language==='ar'?'CaesarScope — اكسر قيصر وفينير':'CaesarScope — Break Caesar & Vigenère';
   document.querySelectorAll('[data-t]').forEach(el=>{el.textContent=t(el.dataset.t);});
   $('language').textContent=language==='ar'?'English / EN':'العربية / AR';
-  if(lastResult)renderResult(lastResult);if(lastChallenge)renderChallenge();
+  const vig=mode==='vigenere';
+  $('modeCaesar').textContent=modeText('caesar');
+  $('modeVigenere').textContent=modeText('vigenere');
+  for(const name of ['caesar','vigenere']){
+    const el=$(name==='caesar'?'modeCaesar':'modeVigenere');
+    el.classList.toggle('isSelected',mode===name);
+    el.setAttribute('aria-pressed',String(mode===name));
+  }
+  $('ctfBox').style.display=vig?'none':'';
+  $('headlineFocus').textContent=vig?modeText('vHeadline'):t('headlineFocus');
+  $('introText').textContent=vig?modeText('vIntro'):t('intro');
+  $('inputHintText').textContent=vig?modeText('vHint'):t('inputHint');
+  $('attack').textContent=vig?modeText('vButton'):t('attackBtn');
+  $('keyLabel').textContent=vig?modeText('vKey'):t('key');
+  $('testedLabel').textContent=vig?modeText('vTested'):t('tested');
+  $('whyTitle').textContent=vig?modeText('vWhy'):t('why');
+  $('allKeysSummary').textContent=vig?modeText('vAll'):t('allKeys');
+  $('keysHintText').textContent=vig?modeText('vAllHint'):t('keysHint');
+  $('challengeIntroText').textContent=vig?modeText('vChallengeIntro'):t('challengeIntro');
+  $('secret').placeholder=vig?modeText('vSecretPlaceholder'):'MEET ME AFTER CLASS';
+  const sampleButtons=[...document.querySelectorAll('[data-sample]')];
+  if(vig){
+    sampleButtons.forEach((b,i)=>{
+      b.dataset.sample=globalThis.CaesarScopeVigenere.encrypt(VIG_SAMPLES[i][1],VIG_SAMPLES[i][0]);
+      b.textContent=modeText('sample'+(i+1));
+    });
+  }else{
+    const defaults=['KHOOR ZRUOG','DWWDFN DW GDZQ','YRLG{f4354u_z45_zu0qj}','JG'];
+    sampleButtons.forEach((b,i)=>{b.dataset.sample=defaults[i];b.textContent=i===2?'CTF Flag':i===3?t('shortExample'):defaults[i];});
+  }
+  if(lastResult)renderResult(lastResult);
+  if(lastChallenge)renderChallenge();
+ }
+ function switchMode(next){
+  if(isRunning||mode===next)return;
+  mode=next;lastChallenge=null;$('challengeResult').style.display='none';$('reveal').disabled=true;
+  $('secretReveal').style.display='none';$('cipher').value='';$('secret').value='';$('ctfPrefix').value='';
+  $('sharedHint').hidden=true;clearOutput();localize();
  }
  function error(id,msg){$(id).textContent=msg;$(id).style.display=msg?'block':'none';}
  function renderResult(result){
+  if(result.mode==='vigenere'){
+    const best=result.best;
+    $('result').classList.add('vigenereResult');
+    $('result').style.display='block';$('plaintext').textContent=best.text;
+    $('bestKey').textContent=best.key;
+    $('testedCount').textContent=String(result.keysScored);
+    $('resultTitle').textContent=modeText('vResult');
+    const pieces=[modeText('vEvidence',{count:result.keysScored,len:result.lengthsChecked})];
+    if(best.found.length)pieces.push(modeText('vWords',{words:best.found.slice(0,5).join(', ')}));
+    if(result.tooShort)pieces.push(modeText('vShort'));
+    pieces.push(modeText('vUncertain'));
+    $('reason').textContent=pieces.join(' ');
+    const container=$('candidates');container.replaceChildren();
+    for(const candidate of result.ranked){
+      const row=document.createElement('div');row.className='candidateRow'+(candidate.key===best.key?' highlight':'');
+      const key=document.createElement('span'),txt=document.createElement('span');
+      key.textContent=candidate.key;txt.textContent=candidate.text;
+      row.append(key,txt);container.appendChild(row);
+    }
+    return;
+  }
+  $('result').classList.remove('vigenereResult');
+  $('testedCount').textContent='26 / 26';
   $('result').style.display='block';$('plaintext').textContent=result.best.text;$('bestKey').textContent=String(result.best.key).padStart(2,'0');
   const best=result.best;
   $('resultTitle').textContent=t(result.isCTF?'ctfResult':'resultTitle');
   let explanation;
   if(result.isCTF){
-   const evidence=best.flag;
-   const parts=[t('ctfAuto')];
-   if(evidence.expected)parts.push(t('ctfWhyPrefix',{prefix:evidence.prefix}));
-   else if(evidence.known)parts.push(t('ctfWhyKnown',{prefix:evidence.prefix}));
-   if(evidence.matches.length)parts.push(t('ctfWhyWords',{words:evidence.matches.slice(0,5).join(', ')}));
-   if(!evidence.expected&&!evidence.known&&!evidence.matches.length)parts.push(t('ctfWhyWeak'));
-   explanation=parts.join(' ');
+    const evidence=best.flag;
+    const parts=[t('ctfAuto')];
+    if(evidence.expected)parts.push(t('ctfWhyPrefix',{prefix:evidence.prefix}));
+    else if(evidence.known)parts.push(t('ctfWhyKnown',{prefix:evidence.prefix}));
+    if(evidence.matches.length)parts.push(t('ctfWhyWords',{words:evidence.matches.slice(0,5).join(', ')}));
+    if(!evidence.expected&&!evidence.known&&!evidence.matches.length)parts.push(t('ctfWhyWeak'));
+    explanation=parts.join(' ');
   } else {
-   explanation=best.n<=7?t('whyShort'):best.found.length?t('whyWords',{words:best.found.slice(0,4).join(', ')})+' '+t('whyLong'):t('whyStat')+' '+t('whyLong');
+    explanation=best.n<=7?t('whyShort'):best.found.length?t('whyWords',{words:best.found.slice(0,4).join(', ')})+' '+t('whyLong'):t('whyStat')+' '+t('whyLong');
   }
   $('reason').textContent=explanation;
   const container=$('candidates');container.replaceChildren();
   for(const candidate of result.ranked){const row=document.createElement('div');row.className='candidateRow'+(candidate.key===best.key?' highlight':'');
-   const key=document.createElement('span'),txt=document.createElement('span');key.textContent=String(candidate.key).padStart(2,'0');txt.textContent=candidate.text;row.append(key,txt);container.appendChild(row);}
+    const key=document.createElement('span'),txt=document.createElement('span');key.textContent=String(candidate.key).padStart(2,'0');txt.textContent=candidate.text;row.append(key,txt);container.appendChild(row);}
  }
  function clearOutput(){lastResult=null;$('result').style.display='none';$('allKeys').open=false;error('error','');}
- function startAttack(){if(isRunning)return;const cipher=$('cipher').value.trim();if(!/[A-Za-z]/.test(cipher)){error('error',t('invalid'));return;}
-  error('error','');isRunning=true;$('attack').disabled=true;$('result').style.display='none';$('progress').style.display='block';$('progressText').style.display='block';$('progressBar').style.width='0%';
+ function startAttack(){
+  if(isRunning)return;
+  const cipher=$('cipher').value.trim();
+  if(!/[A-Za-z]/.test(cipher)){error('error',t('invalid'));return;}
+  error('error','');isRunning=true;$('attack').disabled=true;
+  $('modeCaesar').disabled=true;$('modeVigenere').disabled=true;
+  $('result').style.display='none';$('progress').style.display='block';$('progressText').style.display='block';$('progressBar').style.width='0%';
+  function finish(result){
+    lastResult=result;renderResult(lastResult);isRunning=false;$('attack').disabled=false;
+    $('modeCaesar').disabled=false;$('modeVigenere').disabled=false;
+    $('progress').style.display='none';$('progressText').style.display='none';
+    $('result').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'nearest'});
+  }
+  if(mode==='vigenere'){
+    $('progressText').textContent=modeText('vRunning');
+    $('progressBar').style.width='15%';
+    window.setTimeout(()=>{
+      try{
+        const outcome=globalThis.CaesarScopeVigenere.attack(cipher);
+        if(!outcome.ranked.length)throw Error('No candidate keys');
+        $('progressBar').style.width='100%';
+        finish({mode:'vigenere',best:outcome.ranked[0],...outcome});
+      }catch(_){
+        error('error',language==='ar'?'تعذّر التحليل. حاول بنص إنجليزي مختلف.':'Analysis failed. Try different English ciphertext.');
+        isRunning=false;$('attack').disabled=false;
+        $('modeCaesar').disabled=false;$('modeVigenere').disabled=false;
+        $('progress').style.display='none';$('progressText').style.display='none';
+      }
+    },60);
+    return;
+  }
   const expectedPrefix=$('ctfPrefix').value.trim().toUpperCase();
   const {ranked,isCTF}=sortCandidates(cipher,expectedPrefix);let i=0;
   const advance=()=>{i++;$('progressBar').style.width=(i/26*100)+'%';$('progressText').textContent=t('testing',{k:i-1});
-    if(i<26){window.setTimeout(advance,22);}else{window.setTimeout(()=>{lastResult={best:ranked[0],ranked,isCTF};renderResult(lastResult);isRunning=false;$('attack').disabled=false;$('progress').style.display='none';$('progressText').style.display='none';$('result').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'nearest'});},140);}};
+    if(i<26){window.setTimeout(advance,22);}else{window.setTimeout(()=>finish({mode:'caesar',best:ranked[0],ranked,isCTF}),140);}};
   advance();
  }
- function createChallenge(){const plain=$('secret').value.trim();if(!/[A-Za-z]/.test(plain)){error('challengeError',t('invalidSecret'));return;}
-  error('challengeError','');const key=(globalThis.crypto && crypto.getRandomValues)?crypto.getRandomValues(new Uint32Array(1))[0]%25+1:Math.floor(Math.random()*25)+1;
-  lastChallenge={plain,key,cipher:encrypt(plain,key)};$('shareStatus').textContent='';renderChallenge();}
+ function createChallenge(){
+  const plain=$('secret').value.trim();if(!/[A-Za-z]/.test(plain)){error('challengeError',t('invalidSecret'));return;}
+  error('challengeError','');
+  if(mode==='vigenere'){
+    const keys=['LEMON','CIPHER','ORANGE','SECURITY','ACADEMY','SECRET','NETWORK'];
+    const random=(globalThis.crypto&&crypto.getRandomValues)?crypto.getRandomValues(new Uint32Array(1))[0]:Math.floor(Math.random()*65536);
+    const key=keys[random%keys.length];
+    lastChallenge={plain,key,cipher:globalThis.CaesarScopeVigenere.encrypt(plain,key),mode:'vigenere'};
+  }else{
+    const key=(globalThis.crypto&&crypto.getRandomValues)?crypto.getRandomValues(new Uint32Array(1))[0]%25+1:Math.floor(Math.random()*25)+1;
+    lastChallenge={plain,key,cipher:encrypt(plain,key),mode:'caesar'};
+  }
+  $('shareStatus').textContent='';renderChallenge();
+ }
  function renderChallenge(){if(!lastChallenge)return;$('challengeResult').style.display='block';$('generatedCipher').textContent=lastChallenge.cipher;$('reveal').disabled=false;
   if($('secretReveal').style.display==='block')$('secretReveal').textContent=t('secretAnswer',{k:lastChallenge.key,text:lastChallenge.plain});}
  async function shareChallenge(){
@@ -114,7 +261,7 @@
   // The URL contains ciphertext only; never serialize the secret key or plaintext.
   const isPublished=window.location.protocol==='https:'||window.location.protocol==='http:';
   const link=new URL(window.location.href);
-  link.search='';link.hash='';link.searchParams.set('c',cipher);
+  link.search='';link.hash='';link.searchParams.set('c',cipher);if(lastChallenge.mode==='vigenere')link.searchParams.set('mode','vigenere');
   try{
    await navigator.clipboard.writeText(isPublished?link.toString():cipher);
    $('shareStatus').textContent=t(isPublished?'shareCopied':'cipherCopied');
@@ -125,6 +272,8 @@
   $('cipher').value=imported;
   $('sharedHint').hidden=false;
  }
+ $('modeCaesar').addEventListener('click',()=>switchMode('caesar'));
+ $('modeVigenere').addEventListener('click',()=>switchMode('vigenere'));
  $('shareChallenge').addEventListener('click',shareChallenge);
  $('language').addEventListener('click' ,()=>{language=language==='ar'?'en':'ar';localize();});
  for(const button of document.querySelectorAll('[data-sample]'))button.addEventListener('click',()=>{$('cipher').value=button.dataset.sample;clearOutput();$('cipher').focus();});
