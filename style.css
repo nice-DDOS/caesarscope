@@ -94,3 +94,14 @@
 .ctfOptions summary{font-size:13px;padding:10px 13px;color:#ced8e3}
 .ctfOptions .detailBody{padding:13px}
 .ctfOptions input{width:100%;max-width:240px;background:#101e2d;color:var(--text);border:1px solid #485a70;border-radius:9px;padding:9px 11px;direction:ltr;text-align:left;letter-spacing:1px;text-transform:uppercase}
+
+
+/* Cipher selector — keeps the original single-page layout. */
+.cipherSwitch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:0 0 18px}
+.cipherMode{background:#142133;border:1px solid #45546a;color:var(--text);padding:12px 10px;border-radius:12px;font-size:14px;font-weight:800;min-height:48px;transition:border-color .15s,background .15s}
+.cipherMode:hover{border-color:var(--orange)}
+.cipherMode.isSelected{background:#392c25;border-color:var(--orange);color:#ffd3b0;box-shadow:inset 0 0 0 1px rgba(255,139,59,.12)}
+.cipherMode:focus-visible{outline:3px solid var(--good);outline-offset:2px}
+.vigenereResult .candidateHead,.vigenereResult .candidateRow{grid-template-columns:minmax(85px,145px) minmax(0,1fr)}
+.vigenereResult .candidateRow span{overflow-wrap:anywhere}
+@media(max-width:420px){.cipherMode{font-size:12px;padding:11px 6px}.vigenereResult .candidateHead,.vigenereResult .candidateRow{grid-template-columns:minmax(75px,110px) minmax(0,1fr)}}
