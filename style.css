@@ -1,7 +1,8 @@
 :root{color-scheme:dark;--bg:#101826;--panel:#1b2738;--panel2:#222f42;--stroke:#364356;--text:#f4f6f8;--muted:#adb9c9;--orange:#ff8b3b;--orange-dark:#e66a1e;--good:#61d6a7;--radius:19px}
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;background:var(--bg);color:var(--text);font-family:Tahoma,"Segoe UI",Arial,sans-serif;line-height:1.65}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:"Almarai","Segoe UI",Tahoma,Arial,sans-serif;line-height:1.65}
+    html[lang="ar"] h1{letter-spacing:0;line-height:1.45}
     button,textarea,input{font:inherit}
     button{cursor:pointer}
     button:focus-visible,textarea:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--good);outline-offset:3px}
@@ -65,7 +66,7 @@
     .detailBody{border-top:1px solid #2f4258;padding:16px}
     .explain{font-size:14px;color:#d4dfe9;margin:0 0 12px}
     .candidateHead,.candidateRow{display:grid;grid-template-columns:75px minmax(0,1fr);gap:12px;align-items:center;padding:8px 10px;direction:ltr;text-align:left;font-family:Consolas,"Courier New",monospace}
-    .candidateHead{font-family:Tahoma,"Segoe UI",sans-serif;color:var(--muted);font-size:12px;border-bottom:1px solid #3d4c5d}
+    .candidateHead{font-family:"Almarai","Segoe UI",Tahoma,Arial,sans-serif;color:var(--muted);font-size:12px;border-bottom:1px solid #3d4c5d}
     .candidateRow{border-bottom:1px solid #2c3b50;font-size:13px}
     .candidateRow:last-child{border:0}
     .candidateRow.highlight{background:#30433f;color:#b6f5d2;border-radius:8px;font-weight:700}
