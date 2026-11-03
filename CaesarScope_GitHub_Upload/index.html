@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; font-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#101826">
+  <meta name="description" content="CaesarScope — an easy, bilingual Caesar Cipher brute-force attack lab. No secret key needed.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CaesarScope — Caesar Cipher Attack Lab">
+  <meta property="og:description" content="Break the Caesar cipher without knowing its key. Bilingual interactive lab with shareable challenges.">
+  <title>CaesarScope — اكسر شفرة قيصر</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="header"><div class="shell headerInner"><div class="brand"><span class="mark" aria-hidden="true">C</span><div><div class="brandMain">CaesarScope</div><div class="brandSub">CAESAR CIPHER ATTACK LAB</div></div></div><button id="language" class="lang" type="button" aria-label="Switch language">English / EN</button></div></header>
+<main class="shell">
+  <section class="hero">
+    <div class="eyebrow">CYBERSECURITY · CRYPTANALYSIS</div>
+    <h1><span data-t="headlineLead">اكسر</span> <em data-t="headlineFocus">شفرة قيصر</em> <span data-t="headlineEnd">بدون مفتاح</span></h1>
+    <p data-t="intro">عندك رسالة مشفّرة؟ أدخلها، والأداة تجرّب جميع المفاتيح الـ26 (Brute Force) وترشّح النص الأصلي. ما تحتاج تعرف المفتاح ولا الرسالة الأصلية.</p>
+  </section>
+  <div class="steps" aria-label="Three easy steps"><div class="step"><span class="num">1</span><span data-t="step1">اكتب النص المشفّر</span></div><div class="step"><span class="num">2</span><span data-t="step2">اضغط اكسر الشفرة</span></div><div class="step"><span class="num">3</span><span data-t="step3">شوف النتيجة والسبب</span></div></div>
+  <section class="panel" aria-labelledby="inputTitle">
+    <div class="panelHead"><h2 class="sectionTitle" id="inputTitle" data-t="inputTitle">شنو الرسالة المشفّرة؟</h2><span class="pill" data-t="noKey">ما يحتاج مفتاح</span></div>
+    <label for="cipher" data-t="inputLabel">النص المشفّر (Ciphertext)</label>
+    <textarea id="cipher" spellcheck="false" maxlength="5000" placeholder="KHOOR ZRUOG"></textarea>
+    <p class="helper" data-t="inputHint">اكتب نصاً مشفّراً بالحروف الإنجليزية. إذا ما عندك، جرّب مثالاً جاهزاً.</p>
+    <p class="sharedHint" id="sharedHint" role="status" data-t="sharedHint" hidden>🔗 تم تحميل التحدّي من الرابط. اضغط اكسر الشفرة!</p>
+    <div class="samples"><span class="samplesLabel" data-t="examples">أمثلة سريعة:</span><button type="button" class="chip" data-sample="KHOOR ZRUOG">KHOOR ZRUOG</button><button type="button" class="chip" data-sample="DWWDFN DW GDZQ">DWWDFN DW GDZQ</button><button type="button" class="chip" data-sample="YRLG{f4354u_z45_zu0qj}">CTF Flag</button><button type="button" class="chip" data-sample="JG" data-t="shortExample">مثال قصير: JG</button></div>
+    <details class="ctfOptions"><summary data-t="ctfOptions">🎯 عندك Flag من CTF؟ إعداد اختياري</summary><div class="detailBody"><label for="ctfPrefix" data-t="ctfPrefixLabel">بادئة العلم (إذا تعرفها)</label><input id="ctfPrefix" type="text" maxlength="24" pattern="[A-Za-z0-9]{0,24}" placeholder="VOID" autocomplete="off" spellcheck="false" inputmode="text"><p class="helper" data-t="ctfPrefixHint">مثلاً VOID أو HTB أو FLAG، بدون الأقواس. مو مفتاح ولا نص أصلي.</p></div></details>
+    <button class="primary" id="attack" type="button" data-t="attackBtn">⚡ اكسر الشفرة الآن</button>
+    <div class="error" id="error" role="alert"></div>
+    <div class="progress" id="progress"><div class="progressBar" id="progressBar"></div></div>
+    <div class="progressText" id="progressText" aria-live="polite"></div>
+    <div class="notice" data-t="privacy">كل التحليل يصير داخل متصفحك، بدون إرسال البيانات لأي خادم.</div>
+  </section>
+  <section class="result" id="result" aria-live="polite">
+    <div class="resultTop"><div class="resultTitle" id="resultTitle" data-t="resultTitle">النتيجة الأقرب للإنجليزية</div><span class="tag" data-t="possible">✓ ترشيح، مو تأكيد</span></div>
+    <div class="plaintext" id="plaintext"></div>
+    <div class="stats"><div class="stat"><small data-t="key">المفتاح المرجّح</small><strong id="bestKey">—</strong></div><div class="stat"><small data-t="tested">المفاتيح المجربة</small><strong>26 / 26</strong></div></div>
+    <div class="evidence"><b data-t="why">ليش الأداة رجّحت هاي النتيجة؟</b><p id="reason"></p></div>
+    <div class="actions"><button class="secondary" id="copy" type="button" data-t="copy">نسخ النص الناتج</button><button class="secondary" id="rerun" type="button" data-t="again">جرّب نص ثاني</button></div>
+    <details id="allKeys"><summary data-t="allKeys">عرض جميع النتائج الـ26 (اختياري)</summary><div class="detailBody"><p class="explain" data-t="keysHint">الأداة تختبر المفاتيح من 0 إلى 25. كلها صحيحة حسابياً؛ ترتيبها مجرد ترجيح لغوي.</p><div class="candidateHead"><span data-t="colKey">Key</span><span data-t="colText">Decrypted text</span></div><div id="candidates"></div></div></details>
+  </section>
+  <section class="challenge" aria-labelledby="challengeTitle"><details id="challengeDetails"><summary><span id="challengeTitle" data-t="challengeTitle">🎓 تريد تسوي تحدّي للطلاب؟ اضغط هنا</span></summary><div class="detailBody"><p class="explain" data-t="challengeIntro">اكتب رسالة إنجليزية، والموقع يشفّرها بمفتاح عشوائي مخفي. أعطِ الطلاب النص المشفّر فقط، وخليهم يجربون الهجوم.</p><label for="secret" data-t="secretLabel">الرسالة السرية (قبل التشفير)</label><textarea id="secret" class="challengeInput" maxlength="5000" spellcheck="false" placeholder="MEET ME AFTER CLASS"></textarea><div class="challengeButtons"><button class="secondary" type="button" id="generate" data-t="generate">🔒 ولّد تحدّياً بمفتاح مخفي</button><button class="secondary" type="button" id="reveal" data-t="reveal" disabled>كشف الجواب الصحيح</button></div><p id="challengeError" class="error" role="alert"></p><div class="challengeResult" id="challengeResult"><div data-t="challengeMade">هذا هو النص الذي تعطيه للطلاب:</div><span class="challengeCipher" id="generatedCipher"></span><div class="challengeButtons"><button class="secondary" id="useChallenge" type="button" data-t="useChallenge">جرّب كسره بالأداة ↑</button><button class="secondary" id="shareChallenge" type="button" data-t="shareChallenge">🔗 انسخ رابط التحدّي</button></div><p class="helper" data-t="shareWarning">الرابط يتضمن النص المشفّر فقط، مو المفتاح أو النص الأصلي. لا تستخدم معلومات حساسة.</p><p id="shareStatus" class="shareStatus" role="status" aria-live="polite"></p><div class="secretReveal" id="secretReveal"></div></div></div></details></section>
+</main>
+<footer class="footer"><div class="shell" data-t="footer">CaesarScope • مختبر تعليمي لكسر شفرة قيصر • النتائج الإحصائية ليست إثباتاً قاطعاً.</div></footer>
+<script defer src="app.js"></script>
+</body>
+</html>
